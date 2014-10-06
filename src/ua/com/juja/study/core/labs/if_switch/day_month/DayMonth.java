@@ -39,4 +39,10 @@ public class DayMonth {
 
         return "";
     }
+
+    public static String getDayOfTheWeek(int dayNum){
+        if (dayNum < 1 || dayNum > 7 ) return "";
+        String [] days = {"Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "sunday"};
+        return days[dayNum - 1];
+    }
 }

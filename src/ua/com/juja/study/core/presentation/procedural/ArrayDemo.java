@@ -8,21 +8,25 @@ package ua.com.juja.study.core.presentation.procedural;
  */
 public class ArrayDemo {
 
+    private static char b;
+
     public static void main(String[] args) {
         initArray();
     }
 
-    private static void initArray(){
-        int []array = new int [10];
+    private static void initArray() {
+        int[] array = new int[10];
+        System.out.println((int)b);
         printArray(array);
-        int array1 [] = new int [10];
+        int array1[] = new int[10];
         printArray(array1);
-        int array2 [] = new int [] {1,2,3};
+        int array2[];
+        array2 = new int[]{1, 2, 3};
         printArray(array2);
-        int [] array3 = {1,2,3,4};
+        int[] array3 = {1, 2, 3, 4};
         printArray(array3);
-        int array4 [];
-        array4 = new int [] {1,2,3,4};
+        int array4[];
+        array4 = new int[]{1, 2, 3, 4};
         printArray(array4);
     }
 

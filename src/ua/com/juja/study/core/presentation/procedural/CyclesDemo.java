@@ -8,19 +8,13 @@ package ua.com.juja.study.core.presentation.procedural;
  */
 public class CyclesDemo {
     public static void main(String[] args) {
-        for (int i = 0; i < 3; i++) {
-            System.out.print(i + 1);
-            System.out.print(" ");
-        }
-        System.out.println();
+        printInForLoop(3);
+        printInWhileLoop(3);
+        printInWhileDoLoop();
+    }
 
-        int i = 0;
-        while (i < 3){
-            System.out.print(i + 1);
-            System.out.print(" ");
-            i++;
-        }
-        System.out.println();
+    private static void printInWhileDoLoop() {
+        int i;
 
         i = 0;
         do {
@@ -28,15 +22,24 @@ public class CyclesDemo {
             System.out.print(" ");
             i++;
         } while (i <3);
-
     }
 
-    private void arrayDemo(){
-        int []array = new int [10];
-        int array1 [] = new int [10];
-        int array2 [] = new int [] {1,2,3};
-        int [] array3 = {1,2,3,4};
-        int array4 [];
-        array4 = new int [] {1,2,3,4};
+    private static void printInWhileLoop(int size) {
+        int i = 0;
+        while (i < size){
+            System.out.print(i + 1);
+            System.out.print(" ");
+            i++;
+        }
+        System.out.println();
     }
+
+    private static void printInForLoop(int size) {
+        for (int i = 0; i < size; i++) {
+            System.out.print(i + 1);
+            System.out.print(" ");
+        }
+        System.out.println();
+    }
+
 }

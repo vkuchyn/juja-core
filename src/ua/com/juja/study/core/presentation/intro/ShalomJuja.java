@@ -1,4 +1,4 @@
-package ua.com.juja.study.core.presentation;
+package ua.com.juja.study.core.presentation.intro;
 
 import java.util.ArrayList;
 import java.util.Arrays;

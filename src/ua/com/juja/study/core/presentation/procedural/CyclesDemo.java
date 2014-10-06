@@ -1,4 +1,4 @@
-package ua.com.juja.study.core.presentation;
+package ua.com.juja.study.core.presentation.procedural;
 
 /**
  * Created with IntelliJ IDEA.

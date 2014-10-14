@@ -20,12 +20,16 @@ public class StaticDemo {
 //        System.out.println(nonStaticField);
 
         StaticDemo staticDemo = new StaticDemo();
+        staticDemo.nonStaticField = 9;
         System.out.println(staticDemo.nonStaticField);
         System.out.println(staticDemo.staticField);
-
+//
         StaticDemo staticDemo1 = new StaticDemo();
+        System.out.println(staticDemo1.nonStaticField);
         staticDemo1.staticField = 13;
 
+
         System.out.println(staticDemo.staticField);
+        System.out.println(StaticDemo.staticField);
     }
 }

@@ -24,8 +24,9 @@ public class ModificatorsDemo {
         // public method accessible from any point of program
     }
 
-    protected void protectedMethod(){
+    protected int protectedMethod(){
         // protected method is accessible from subclasses and from inside package
+        return protectedField;
     }
 
     void packagePrivateMethod(){

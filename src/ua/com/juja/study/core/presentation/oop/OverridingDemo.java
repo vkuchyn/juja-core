@@ -8,8 +8,20 @@ public class OverridingDemo extends Object {
     }
 
     public static void main(String[] args) {
-        Object overridingDemo = new OverridingDemo();
+        Object overridingDemo = new A2();
         System.out.println(overridingDemo.toString());
 
+    }
+}
+
+class A1 extends OverridingDemo{
+
+}
+
+class A2 extends A1{
+    @Override
+    public String toString() {
+
+        return "A2" + super.toString();
     }
 }

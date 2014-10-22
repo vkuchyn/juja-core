@@ -26,7 +26,13 @@ public class MergeSorter {
 
 
     private static void mergeSort(int[] array, int start, int end) {
-        //TODO implement sorting
+        if (end - start < 1) return;
+        int middle = (start + end) / 2;
+        mergeSort(array, start, middle);
+        mergeSort(array, middle + 1, end);
+        debug(array, "Before merge start=" + start + " end=" + end);
+        mergeArray(array, start, middle, end);
+        debug(array, "After merge start=" + start + " end=" + end);
     }
 
     private static void info(int[] array) {

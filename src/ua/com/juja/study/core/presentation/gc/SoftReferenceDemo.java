@@ -19,7 +19,7 @@ public class SoftReferenceDemo {
             for (int i = 0; i < counter; i++) {
                 System.out.print(references[i].get() == null ? "*" : "E");
             }
-            references[counter++] = new SoftReference<>(new byte[10_000_000]);
+            references[counter++] = new SoftReference<>(new byte[100_000_000]);
             Thread.sleep(100);
         }
     }

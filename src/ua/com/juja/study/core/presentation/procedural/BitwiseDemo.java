@@ -8,6 +8,20 @@ package ua.com.juja.study.core.presentation.procedural;
  */
 public class BitwiseDemo {
     public static void main(String args[]) {
+//        bitwiseNumberOperations();
+        bitwiseBooleanOperations();
+    }
+
+    private static void bitwiseBooleanOperations() {
+        String greetingText = null;
+        if (greetingText == null || greetingText.equals("hello")) {
+            System.out.println(greetingText);
+        } else {
+            System.out.println("Greeting text is null");
+        }
+    }
+
+    private static void bitwiseNumberOperations() {
         int a = 60;	/* 60 = 0011 1100 */
         int b = 13;	/* 13 = 0000 1101 */
         int c = 0;

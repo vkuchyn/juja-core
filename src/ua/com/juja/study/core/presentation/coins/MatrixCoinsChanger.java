@@ -1,5 +1,7 @@
 package ua.com.juja.study.core.presentation.coins;
 
+import java.util.Arrays;
+
 /**
  * Created with IntelliJ IDEA.
  * User: viktor
@@ -12,10 +14,10 @@ public class MatrixCoinsChanger {
     public static boolean debugMode = false;
 
     public static void main(String[] args) {
-        System.out.println(getCombinations(5));
         debugMode = true;
-        System.out.println(getCombinations(10));
+        System.out.println(getCombinations(5));
         debugMode = false;
+        System.out.println(getCombinations(10));
         System.out.println(getCombinations(100));
     }
 
@@ -62,12 +64,9 @@ public class MatrixCoinsChanger {
         if (!debugMode) return;
 
         System.out.println("i=" + nominal);
-        for (int i = 0; i < matrix.length; i++) {
-            for (int j = 0; j < matrix[0].length; j++) {
-                System.out.print(matrix[i][j] + " ");
-            }
-            System.out.println();
-        }
+        String stringMatrix = Arrays.deepToString(matrix);
+        stringMatrix = stringMatrix.replaceAll("\\], \\[", "]\n[");
+        System.out.println(stringMatrix);
         System.out.println("---------------");
     }
 

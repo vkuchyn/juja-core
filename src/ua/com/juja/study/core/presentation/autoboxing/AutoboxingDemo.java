@@ -8,12 +8,12 @@ package ua.com.juja.study.core.presentation.autoboxing;
  */
 public class AutoboxingDemo {
     public static void main(String[] args) {
-        byteDemo();
-        shortDemo();
-        charDemo();
-        integerDemo();
-        longDemo();
-        floatDemo();
+//        byteDemo();
+//        shortDemo();
+//        charDemo();
+//        integerDemo();
+//        longDemo();
+//        floatDemo();
         booleanDemo();
     }
 
@@ -62,16 +62,15 @@ public class AutoboxingDemo {
         System.out.println("Character demo");
         char ch = 'a';
         System.out.println(ch);
-        ch = 97;
+        ch = 98;
         System.out.println(ch);
         Character wrappedChar = ch;
         System.out.println(wrappedChar);
     }
 
     private static void shortDemo() {
-        short sh = 10;
         System.out.println("Short demo");
-        sh = Short.valueOf("32767");
+        short sh = Short.valueOf("32768");
         System.out.println(sh);
         Short wrappedShort = sh;
         System.out.println(wrappedShort);
@@ -81,9 +80,11 @@ public class AutoboxingDemo {
         System.out.println("Byte demo");
         byte b = Byte.valueOf((byte) 10);
         System.out.println(b);
-        b = Byte.parseByte("127");
+        b = Byte.parseByte("-128");
         System.out.println(b);
         Byte wrapperByte = b;
         System.out.println(wrapperByte);
+        System.out.println(Byte.MAX_VALUE);
+        System.out.println(Byte.MIN_VALUE);
     }
 }

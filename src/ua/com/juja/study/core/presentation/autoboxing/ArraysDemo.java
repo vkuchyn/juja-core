@@ -10,12 +10,15 @@ import java.util.Arrays;
  */
 public class ArraysDemo {
     public static void main(String[] args) {
-        simpleArraysToStringEqualsDemo();
-        doubleArraysToStringEqualsDemo();
-        deepToStringEqualsDemo();
-        arraysCloneDemo();
-        arraysCloneProblemDemo();
-        arraysCopyDemo();
+//        simpleArraysToStringEqualsDemo();
+//        doubleArraysToStringEqualsDemo();
+//        deepToStringEqualsDemo();
+//        arraysCloneDemo();
+//        arraysCloneProblemDemo();
+//        arraysCopyDemo();
+        Double [] ints = {5.0,4.0,3.0,2.0,1.0};
+        Arrays.sort(ints);
+        System.out.println(Arrays.toString(ints));
     }
 
     private static void arraysCopyDemo() {
@@ -27,7 +30,7 @@ public class ArraysDemo {
 
         System.out.println();
 
-        System.arraycopy(array0, 2, array1, 4, 5);
+        System.arraycopy(array0, 2, array1, 4, 6);
         System.out.println("array0 = " + Arrays.toString(array0));
         System.out.println("array1 = " + Arrays.toString(array1));
 
@@ -43,7 +46,8 @@ public class ArraysDemo {
     private static void arraysCloneProblemDemo() {
         System.out.println("arraysCloneProblemDemo");
         int[][] array0 = {{0, 1}, {2, 3}};
-        int[][] array1 = array0.clone();
+        int[][] array1 = new int[array0.length][array0[0].length];
+        System.arraycopy(array0, 0, array1, 0, array0.length);
 
         array0[1][1] = 9;
 
@@ -71,7 +75,7 @@ public class ArraysDemo {
 
     private static void doubleArraysToStringEqualsDemo() {
         System.out.println("doubleArraysToStringEqualsDemo");
-        int[][] array0 = {{0, 1}, {2, 3}};
+        int[][] array0 = {{0, 1}, {2, 3, 4}};
         int[][] array1 = {{0, 1}, {2, 3}};
 
         System.out.println(Arrays.toString(array0));
@@ -83,6 +87,8 @@ public class ArraysDemo {
         int[] array0 = {0, 1, 2};
         int[] array1 = {0, 1, 2};
 
+        System.out.println(array0);
+        System.out.println(array0.equals(array1));
         System.out.println(Arrays.toString(array0));
         System.out.println(Arrays.equals(array0, array1));
     }

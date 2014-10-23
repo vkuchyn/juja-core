@@ -6,16 +6,34 @@ package ua.com.juja.study.core.presentation.autoboxing;
  * Date: 10/23/14
  * Time: 2:48 PM
  */
-public final class FinalDemo {
+public  class FinalDemo {
 
-    private static final int finalStaticField = 1;
-    private static final int finalField = 2;
+    private static final int finalStaticField;
+    private  int finalField;
 
-    public final void finalMethod(final int finalParameter) {
-//        finalParameter = 3;
+    static {
+        finalStaticField = 1;
     }
+
+    public FinalDemo() {
+        finalField = 3;
+    }
+
+    public static final void finalMethod(final int finalParameter) {
+//        finalParameter = 3;
+        new Runnable() {
+            @Override
+            public void run() {
+                System.out.println(finalParameter);
+            }
+        };
+    }
+
 }
 
 //class FinalDemoSubclass extends FinalDemo{
 //
+//    public void finalMethod(int finalParameter) {
+//
+//    }
 //}

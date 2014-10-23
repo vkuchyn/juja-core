@@ -15,10 +15,11 @@ public class RecursiveCoinsChanger {
 
 
     public static void main(String[] args) {
-        debugMode = true;
+
         System.out.println(calcVariants(5));
-        debugMode = false;
+        debugMode = true;
         System.out.println(calcVariants(10));
+        debugMode = false;
         System.out.println(calcVariants(100));
     }
 

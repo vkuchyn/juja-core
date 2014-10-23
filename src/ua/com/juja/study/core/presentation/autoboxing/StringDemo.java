@@ -8,18 +8,19 @@ package ua.com.juja.study.core.presentation.autoboxing;
  */
 public class StringDemo {
     public static void main(String[] args) {
-        constantPoolDemo();
-        reverseDemo();
-        substringDemo();
-        reverseDEmo();
+//        constantPoolDemo();
+//        reverseDemo();
+//        substringDemo();
+        replaceDemo();
     }
 
-    private static void reverseDEmo() {
-        String digits = "01234567890";
-        System.out.println(digits.replace("0", "A"));
-        System.out.println(digits.replaceAll("0", "00"));
-        System.out.println(digits.replaceFirst("0", "00"));
-        System.out.println(reverse(reverse(digits).replaceFirst("0", "00")));
+    private static void replaceDemo() {
+        String digits = "0  1 2  34 5 67   8 9 0";
+        System.out.println(digits.replaceAll("\\s+", "_"));
+
+//        System.out.println(digits.replaceAll("0", "00"));
+//        System.out.println(digits.replaceFirst("0", "00"));
+//        System.out.println(reverse(reverse(digits).replaceFirst("0", "00")));
     }
 
     private static void substringDemo() {
@@ -33,7 +34,7 @@ public class StringDemo {
         String str = "Hello, Juja!";
         System.out.println(reverse(str));
         System.out.println(str);
-        System.out.println(new StringBuilder().append(str).reverse().toString());
+        System.out.println(new StringBuilder(str).reverse().toString());
     }
 
     public static String reverse(String input) {
@@ -52,12 +53,11 @@ public class StringDemo {
     }
 
     private static void constantPoolDemo() {
-        String str1 = "Hello!".intern();
+        String str1 = "Hello!";
         String str2 = "Hello!";
         System.out.println(str1 == str2);
 
-        str1 = new String("Hello!");
-        str2 = new String("Hello!");
+        str1 = new String("Hello!").intern();
         System.out.println(str1 == str2);
 
         String s1 = "jim";

@@ -11,11 +11,20 @@ import java.util.Arrays;
  */
 public class ReaderWriterDemo {
     public static void main(String[] args) throws IOException {
-        System.out.println(readFromString());
-        System.out.println(readFromFile());
-        System.out.println(readFromFileByLines());
+//        System.out.println(readFromString());
+//        System.out.println(readFromFile());
+//        System.out.println(readFromFileByLines());
 
-        copyFromFileToFileWithReaderAndWriter("text.txt", "copy_text.txt");
+//        copyFromFileToFileWithReaderAndWriter("text.txt", "copy_text.txt");
+        String line = "";
+
+        while (!line.equals("\\q")) {
+            BufferedReader reader = new BufferedReader(
+                    new InputStreamReader(System.in));
+            line = reader.readLine();
+            System.out.println("User entered " + line);
+        }
+
     }
 
     private static void copyFromFileToFileWithReaderAndWriter(String source, String dest) throws IOException {
@@ -37,8 +46,9 @@ public class ReaderWriterDemo {
         String line = null;
         while ((line = reader.readLine()) != null) {
             System.out.println(line);
-            text.append(line);
+            text.append(line).append("\n");
         }
+        reader.close();
         return text.toString();
 
     }

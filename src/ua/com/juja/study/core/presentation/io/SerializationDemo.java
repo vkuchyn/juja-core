@@ -26,7 +26,7 @@ public class SerializationDemo {
 
 class Data implements Serializable{
     private int i1 = 23;
-    private String name = "Name";
+    private String name = "Ім'''я";
     private transient String notSerialized;
 
     Data(String notSerialized){

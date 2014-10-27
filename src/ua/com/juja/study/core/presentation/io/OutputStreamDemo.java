@@ -1,6 +1,9 @@
 package ua.com.juja.study.core.presentation.io;
 
-import java.io.*;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
 
@@ -28,12 +31,12 @@ public class OutputStreamDemo {
             }
         };
 
-        ous.write("Juja".getBytes());
-        System.out.println(ous.toString());
-        ous.write(" Джуджа".getBytes());
-        System.out.println(ous.toString());
-
-        copyFromFileToAnother("text.txt", "copy_text.txt");
+//        ous.write("Juja".getBytes());
+//        System.out.println(ous.toString());
+//        ous.write(" Джуджа".getBytes());
+//        System.out.println(ous.toString());
+//
+//        copyFromFileToAnother("text.txt", "copy_text.txt");
         compressFileToZip("text.txt", "copy_text.zip");
     }
 
@@ -41,7 +44,7 @@ public class OutputStreamDemo {
         FileInputStream fis = new FileInputStream(source);
         ZipOutputStream zip = new ZipOutputStream(new FileOutputStream(destZip));
         byte[] buffer = new byte[32];
-        ZipEntry zipEntry = new ZipEntry(source);
+        ZipEntry zipEntry = new ZipEntry(source );
         zip.putNextEntry(zipEntry);
         while (fis.read(buffer) != -1) {
             zip.write(buffer);
@@ -49,16 +52,17 @@ public class OutputStreamDemo {
 
         fis.close();
         zip.close();
-
     }
 
     private static void copyFromFileToAnother(String source, String dest) throws IOException {
         FileInputStream fis = new FileInputStream(source);
         FileOutputStream fous = new FileOutputStream(dest);
-        byte[] buffer = new byte[32];
+        int bufferSize = 32;
+        byte[] buffer = new byte[bufferSize];
 
         while (fis.read(buffer) != -1) {
             fous.write(buffer);
+            buffer = new byte[bufferSize];
         }
 
         fis.close();

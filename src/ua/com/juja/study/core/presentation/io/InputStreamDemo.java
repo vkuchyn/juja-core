@@ -2,8 +2,6 @@ package ua.com.juja.study.core.presentation.io;
 
 import java.io.*;
 import java.net.URL;
-import java.util.zip.ZipEntry;
-import java.util.zip.ZipFile;
 import java.util.zip.ZipInputStream;
 
 /**

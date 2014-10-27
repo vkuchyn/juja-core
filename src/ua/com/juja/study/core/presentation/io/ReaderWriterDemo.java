@@ -24,9 +24,10 @@ public class ReaderWriterDemo {
         String line = null;
         while ((line = reader.readLine()) != null) {
             System.out.println(line);
-            writer.write(line + " {writer}");
+            writer.append(line + " {writer}");
             writer.newLine();
         }
+        writer.flush();
         writer.close();
     }
 

@@ -12,15 +12,23 @@ import java.io.IOException;
 public class TryCatchFinallyDemo {
 
     public static void main(String[] args) {
-        tryCatchFinallyOrder();
-        tryCatchFinallyPolymorph();
-        tryWithResourcesDemo();
+        try {
+            main(args);
+        } catch (StackOverflowError error) {
+            System.out.println(error);
+            main(args);
+        }
     }
 
-    private static void tryWithResourcesDemo() {
+    private static void tryWithResourcesDemo() throws NullPointerException {
+        nestedMethod();
+        System.out.println("after nested method");
+    }
+
+    private static void nestedMethod() {
         try (CloseableDemo closeable = new CloseableDemo()) {
             // do nothing
-            throw new RuntimeException();
+            throw new CustomUncheckedException();
         }
     }
 
@@ -32,18 +40,21 @@ public class TryCatchFinallyDemo {
             } else {
                 throw new IOException();
             }
-        } catch (IOException | IllegalArgumentException ex) {
+        } catch (IllegalArgumentException ex) {
+            System.out.println("exception " + ex);
+        } catch (IOException ex) {
             System.out.println("exception " + ex);
         }
+
     }
 
     private static int tryCatchFinallyOrder() {
         try {
             throw new IOException();
         } catch (IOException ex) {
-            return 1;
+            throw ex;
         } finally {
-            return 2;
+            throw new IllegalArgumentException();
         }
     }
 }

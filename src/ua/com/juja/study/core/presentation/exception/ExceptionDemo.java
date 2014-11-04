@@ -9,15 +9,9 @@ package ua.com.juja.study.core.presentation.exception;
 public class ExceptionDemo {
 
     public static void main(String[] args) {
-        int errorCode = validateCmdOptionWithErrorCode(args);
-        if (errorCode != 0) {
-            String[] errorMessages = {"User not provided",
-                    "Password not provided", "db url not provided",
-                    "Driver not provided"};
-            System.out.println(errorMessages[errorCode - 1]);
-        } else {
-            // continue valid program flow
-        }
+        validateCmdOptionSystemExit(new String[] {"-u"});
+        // continue valid program flow
+        System.out.println("continue valid program flow");
     }
 
     private static int validateCmdOptionWithErrorCode(String[] args) {
@@ -44,26 +38,19 @@ public class ExceptionDemo {
         return errorCode;
     }
 
-    private static int validateCmdOptionSystemExit(String[] args) {
-        boolean[] argumentsPresent = new boolean[4];
+    private static void validateCmdOptionSystemExit(String[] args) {
+
         for (int i = 0; i < args.length; i++) {
             if ("-u".equals(args[i])) {
-                argumentsPresent[0] = true;
+                throw new IllegalArgumentException("Absent argument user");
             } else if ("-p".equals(args[i])) {
-                argumentsPresent[1] = true;
+                throw new IllegalArgumentException("Absent argument password");
             } else if ("-url".equals(args[i])) {
-                argumentsPresent[2] = true;
+                throw new IllegalArgumentException("Absent argument db url");
             } else if ("-d".equals(args[i])) {
-                argumentsPresent[3] = true;
+                throw new IllegalArgumentException("Absent argument driver");
             }
         }
-
-        for (int i = 0; i < argumentsPresent.length; i++) {
-            if (!argumentsPresent[i]) {
-                System.exit(i + 1);
-            }
-        }
-        return 0;
     }
 
 }

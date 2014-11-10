@@ -1,7 +1,6 @@
 package ua.com.juja.study.core.presentation.collections;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -16,27 +15,13 @@ public class EqualsDemo {
         List list = new ArrayList();
         Element element = new Element();
         list.add(element);
-        list.add(new Element());
+        Element element1 = new Element();
+        list.add(element1);
         System.out.println(list);
         System.out.println(list.contains(element));
-        System.out.println(list.remove(element));
+        System.out.println(list.remove(element1));
         System.out.println(list.remove(0));
 
     }
 }
 
-class Element{
-    private static int objectLastNumber = 0;
-
-    private int objectNumber = objectLastNumber++;
-
-    @Override
-    public boolean equals(Object obj) {
-        return false;
-    }
-
-    @Override
-    public String toString() {
-        return "element" + objectNumber;
-    }
-}

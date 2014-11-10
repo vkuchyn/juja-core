@@ -14,6 +14,7 @@ public class DequeDemo {
     public static void main(String[] args) {
         Deque deque = new LinkedList();
         demoStack(deque);
+        if (true) return;
         deque.add("1");
         deque.offer("Hello");
         deque.add(3);
@@ -44,7 +45,7 @@ public class DequeDemo {
         System.err.println("Remove first " + deque.removeFirst());
         System.err.println(deque);
         System.err.println("Remove First " + deque.removeFirst());
-        System.err.println(deque.element());
+        System.err.println(deque.getFirst());
 
         deque.removeFirst();
         System.err.println("finished demo stack");

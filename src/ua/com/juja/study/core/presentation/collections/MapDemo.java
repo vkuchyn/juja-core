@@ -10,6 +10,7 @@ import java.util.Map;
  * Time: 11:39 AM
  */
 public class MapDemo {
+
     public static void main(String[] args) {
         Map map = new HashMap();
         map.put("key1", "value1");
@@ -20,6 +21,7 @@ public class MapDemo {
 
         Map map1 = new HashMap();
         map1.put("key2", "value2`");
+        map1.put("key3", "value2");
         map1.putAll(map);
         System.out.println(map1);
 

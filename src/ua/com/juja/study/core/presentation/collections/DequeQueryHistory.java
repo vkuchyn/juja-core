@@ -10,12 +10,14 @@ import java.util.LinkedList;
  * Time: 12:33 PM
  */
 public class DequeQueryHistory implements QueryHistory {
-    private Deque<String> queryHistory = new LinkedList<>();
+    private Deque<String> nextHistory = new LinkedList<>();
+    private Deque<String> previousHistory = new LinkedList<>();
 
     @Override
-
     public String getNextQuery() {
-        throw new UnsupportedOperationException("Not implemented");
+        String nextQuery = nextHistory.pollFirst();
+        previousHistory.addFirst(nextQuery);
+        return nextQuery;
     }
 
     @Override
@@ -25,6 +27,9 @@ public class DequeQueryHistory implements QueryHistory {
 
     @Override
     public void addQueryToTheHead(String query) {
-        throw new UnsupportedOperationException("Not implemented");
+        if (nextHistory.size() + previousHistory.size() >= QUERY_BUFFER_COUNT) {
+            nextHistory.addFirst(query);
+            nextHistory.removeLast();
+        }
     }
 }

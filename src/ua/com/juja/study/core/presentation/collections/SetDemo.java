@@ -1,8 +1,6 @@
 package ua.com.juja.study.core.presentation.collections;
 
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 /**
  * Created with IntelliJ IDEA.
@@ -12,13 +10,52 @@ import java.util.Set;
  */
 public class SetDemo {
 
-    private final static String [] DAYS_OF_WEEK = {"Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"};
+    private final static String [] DAYS_OF_WEEK = {"Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday",
+            "Sunday"};
     public static void main(String[] args) {
-        Set daysOfWeek = new HashSet(Arrays.asList(DAYS_OF_WEEK));
-        System.out.println(daysOfWeek);
-        daysOfWeek.add("Monday");
-        System.out.println(daysOfWeek);
-        System.out.println(daysOfWeek.contains("Tuesday"));
-        System.out.println(daysOfWeek.contains("tuesday"));
+        Set set = new HashSet();
+        set.add(new Element1());
+        set.add(new Element1());
+        System.out.println(set);
     }
 }
+
+class Element {
+    private static int lastID = 0;
+
+    private int id = lastID++;
+
+    @Override
+    public boolean equals(Object obj) {
+        return true;
+    }
+
+    @Override
+    public String toString() {
+        return "element" + id;
+    }
+}
+
+class Element1 {
+    private static int lastID = 0;
+
+    private int id = lastID++;
+
+    @Override
+    public boolean equals(Object obj) {
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        return 1;
+    }
+
+    @Override
+    public String toString() {
+        return "element" + id;
+    }
+}
+
+
+

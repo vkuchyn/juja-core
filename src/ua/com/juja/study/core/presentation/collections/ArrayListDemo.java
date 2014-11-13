@@ -11,7 +11,7 @@ import java.util.List;
  */
 public class ArrayListDemo {
     public static void main(String[] args) {
-        List<String> strings = new ArrayListWrapper<>();
+        List<String> strings = new ArrayList<>(1);
         strings.add("1");
         strings.add("2");
         strings.add("3");
@@ -24,7 +24,7 @@ public class ArrayListDemo {
 class ArrayListWrapper<E> extends ArrayList<E> {
 
     ArrayListWrapper() {
-        super(2);
+        super(1);
     }
 
     @Override

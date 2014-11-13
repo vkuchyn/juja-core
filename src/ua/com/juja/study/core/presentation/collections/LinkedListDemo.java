@@ -17,6 +17,6 @@ public class LinkedListDemo {
         strings.add("3");
         strings.add("4");
         strings.add("5");
-        strings.add("6");
+        strings.add(2, "6");
     }
 }

@@ -16,7 +16,14 @@ public class ThreadDemo {
         Thread th = new Thread(){
             @Override
             public void run() {
-                System.out.println("Thread with thread inheritance started");
+                for (int i = 0; i < 3 ; i++) {
+                    System.out.println("Thread with thread inheritance started " + i);
+                    try {
+                        Thread.sleep(500);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+                    }
+                }
             }
         };
         th.start();
@@ -26,7 +33,14 @@ public class ThreadDemo {
         Thread th = new Thread(new Runnable() {
             @Override
             public void run() {
-                System.out.println("Thread with Runnable started");
+                for (int i = 0; i < 3; i++) {
+                    System.out.println("Thread with Runnable started " + i);
+                    try {
+                        Thread.sleep(300);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+                    }
+                }
             }
         });
         th.start();

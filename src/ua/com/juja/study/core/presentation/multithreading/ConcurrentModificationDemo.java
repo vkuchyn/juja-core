@@ -6,7 +6,7 @@ package ua.com.juja.study.core.presentation.multithreading;
  * Date: 11/17/14
  * Time: 10:27 AM
  */
-public class ConcurrentModificationDemo extends Thread{
+public class ConcurrentModificationDemo extends Thread {
     private static String text = "";
     private static String text1 = "";
 
@@ -17,7 +17,7 @@ public class ConcurrentModificationDemo extends Thread{
         th2.start();
         Thread.sleep(2);
         System.out.println(text);
-        System.out.println(text1);
+//        System.out.println(text1);
     }
 
     public ConcurrentModificationDemo(String name) {
@@ -25,8 +25,7 @@ public class ConcurrentModificationDemo extends Thread{
     }
 
     @Override
-    public void run() {
+    public synchronized void run() {
         text = text + getName();
-        text1 = getName();
     }
 }

@@ -7,7 +7,7 @@ package ua.com.juja.study.core.presentation.multithreading;
  * Time: 10:15 AM
  */
 public class SingletonLazyConcurrent {
-    private static SingletonLazyConcurrent instance;
+    private static volatile SingletonLazyConcurrent instance;
 
     private SingletonLazyConcurrent() {
         try {
@@ -17,14 +17,14 @@ public class SingletonLazyConcurrent {
         }
     }
 
-    public static SingletonLazyConcurrent getInstance() {
-        if (instance == null) {
-//            System.out.println("Singleton instance created " + new SingletonLazyConcurrent());
-            instance = new SingletonLazyConcurrent();
-        }
-
-        return instance;
+    private  static class Handler{
+        static SingletonLazyConcurrent instance = new SingletonLazyConcurrent();
     }
+
+    public static SingletonLazyConcurrent getInstance() {
+        return Handler.instance;
+    }
+
 
     public static void main(String[] args) {
         class GetSingleton implements Runnable {

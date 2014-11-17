@@ -20,8 +20,9 @@ public class JoinDemo {
                 System.out.println("Computing finished");
             }
         };
+        th.setDaemon(true);
         th.start();
-        th.join();
+//        th.join();
         System.out.println("Computing thread started");
     }
 }

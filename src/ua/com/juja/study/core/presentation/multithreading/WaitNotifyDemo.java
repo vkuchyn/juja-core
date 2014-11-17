@@ -23,12 +23,12 @@ public class WaitNotifyDemo {
         System.out.println("Thread " + Thread.currentThread().getName() + " woke up");
     }
 
-    public synchronized void notifyExample(){
+    public void notifyExample() {
         System.out.println("Thread " + Thread.currentThread().getName() + " notifying objects");
         notify();
     }
 
-    static class WaitRunnable implements Runnable{
+    static class WaitRunnable implements Runnable {
 
         private WaitNotifyDemo demo;
 
@@ -47,7 +47,7 @@ public class WaitNotifyDemo {
         }
     }
 
-    static class NotifyRunnable implements Runnable{
+    static class NotifyRunnable implements Runnable {
 
         private WaitNotifyDemo demo;
 
@@ -57,7 +57,9 @@ public class WaitNotifyDemo {
 
         @Override
         public void run() {
-            demo.notifyExample();
+            synchronized (demo) {
+                demo.notifyExample();
+            }
         }
     }
 }

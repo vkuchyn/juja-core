@@ -13,7 +13,7 @@ public class SynchronizedDemo implements Runnable{
         new Thread(new Runnable() {
             @Override
             public void run() {
-                synchronizedDemo.doSomething();
+                doSomething();
             }
         }).start();
 
@@ -35,7 +35,7 @@ public class SynchronizedDemo implements Runnable{
         System.out.println("Exit static block");
     }
 
-    public synchronized void doSomething() {
+    public static synchronized void doSomething() {
         System.out.println("Entered non static block");
         try {
             Thread.sleep(100);

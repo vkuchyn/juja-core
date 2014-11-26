@@ -1,6 +1,7 @@
 package ua.com.juja.study.core.presentation.multithreading.util.concurrent;
 
 import java.util.concurrent.*;
+import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * Created with IntelliJ IDEA.

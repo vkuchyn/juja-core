@@ -17,7 +17,7 @@ public class ConditionDemo {
     public static void main(String[] args) throws InterruptedException {
         ConditionDemo demo = new ConditionDemo();
         new Thread(new WaitRunnable(demo), "th1").start();
-        Thread.sleep(1100);
+        Thread.sleep(2100);
         new Thread(new NotifyRunnable(demo), "th2").start();
     }
 
@@ -67,9 +67,7 @@ public class ConditionDemo {
 
         @Override
         public void run() {
-            synchronized (demo) {
-                demo.notifyExample();
-            }
+            demo.notifyExample();
         }
     }
 

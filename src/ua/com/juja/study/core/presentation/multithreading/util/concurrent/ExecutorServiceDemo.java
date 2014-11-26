@@ -10,25 +10,31 @@ import java.util.concurrent.*;
  */
 public class ExecutorServiceDemo {
     public static void main(String[] args) throws ExecutionException, InterruptedException {
-        System.out.println("Running main thread " + Thread.currentThread().getName());
-        runSingleThread();
+//        System.out.println("Running main thread " + Thread.currentThread().getName());
+//        runSingleThread();
+//        if (true) return;
         ExecutorService executorService = Executors.newFixedThreadPool(2);
-        Future<String> futureTask1 = executorService.submit(new Callable<String>() {
+
+        FutureTask<String> futureTask1 = new FutureTask<>(new SimpleCallable(1000));
+        executorService.submit(futureTask1);
+
+        FutureTask<String> futureTask2 = new FutureTask<>(new SimpleCallable(3000));
+        executorService.execute(futureTask2);
+
+        Future<String> futureTask3 = executorService.submit(new Callable<String>() {
             @Override
             public String call() throws Exception {
                 throw new UnsupportedOperationException();
             }
         });
 
-        FutureTask<String> futureTask2 = new FutureTask<>(new SimpleCallable(3000));
-        executorService.execute(futureTask2);
         while (true) {
             try {
                 if (futureTask1.isDone() && futureTask2.isDone()) {
                     System.out.println("Done");
                     //shut down executor service
                     executorService.shutdown();
-                    System.out.println(futureTask1.get());
+                    System.out.println(futureTask3.get());
                     return;
                 }
 

@@ -9,7 +9,7 @@ import java.util.concurrent.*;
  * Time: 10:55 AM
  */
 public class ConsumerProducerDemo {
-    private BlockingQueue<Integer> numbersQueue = new ArrayBlockingQueue<>(2);
+    private BlockingQueue<Integer> numbersQueue = new ArrayBlockingQueue<>(3);
 
     public static void main(String[] args) throws ExecutionException, InterruptedException {
         ConsumerProducerDemo demo = new ConsumerProducerDemo();
@@ -21,16 +21,16 @@ public class ConsumerProducerDemo {
         final FactorialCounterConsumer consumer = new FactorialCounterConsumer();
         final FactorialCounterProducer producer = new FactorialCounterProducer();
 
-        Future task1 = executorService.submit(new Callable<Object>() {
-            @Override
-            public Object call() throws Exception {
-                int counter = 10;
-                while (counter-- > 0) {
-                    producer.produce();
-                }
-                return null;
-            }
-        });
+//        Future task1 = executorService.submit(new Callable<Object>() {
+//            @Override
+//            public Object call() throws Exception {
+//                int counter = 10;
+//                while (counter-- > 0) {
+//                    producer.produce();
+//                }
+//                return null;
+//            }
+//        });
         Future task2 = executorService.submit(new Callable<Object>() {
             @Override
             public Object call() throws Exception {
@@ -41,7 +41,7 @@ public class ConsumerProducerDemo {
                 return null;
             }
         });
-        task1.get();
+//        task1.get();
         task2.get();
         executorService.shutdown();
     }
@@ -57,8 +57,8 @@ public class ConsumerProducerDemo {
     private class FactorialCounterProducer {
         public void produce() throws InterruptedException {
             int producedNumber = (int) (Math.random() * 1000);
-            System.out.println("produced " + producedNumber);
             numbersQueue.put(producedNumber);
+            System.out.println("produced " + producedNumber);
             Thread.sleep(500);
         }
     }

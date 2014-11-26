@@ -4,6 +4,7 @@ import java.util.LinkedList;
 import java.util.Queue;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.locks.ReadWriteLock;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
 
 /**
@@ -13,7 +14,7 @@ import java.util.concurrent.locks.ReentrantReadWriteLock;
  * Time: 10:16 AM
  */
 public class ReadWriteLockDemo {
-    private ReentrantReadWriteLock readWriteLock = new ReentrantReadWriteLock();
+    private ReadWriteLock readWriteLock = new ReentrantReadWriteLock();
 
 
     public static void main(String[] args) {
@@ -24,7 +25,6 @@ public class ReadWriteLockDemo {
             public void run() {
                 int count = 3;
                 while (count-- > 0) {
-                    pause(1000);
                     System.out.println(demo.read());
                 }
             }
@@ -47,6 +47,7 @@ public class ReadWriteLockDemo {
             readWriteLock.writeLock().lock();
             System.out.println(Thread.currentThread().getName() + " " + text);
             pause(5000);
+            System.out.println(Thread.currentThread().getName() + " Finished writing");
         } finally {
             readWriteLock.writeLock().unlock();
         }
@@ -55,6 +56,7 @@ public class ReadWriteLockDemo {
     public String read() {
         try {
             readWriteLock.readLock().lock();
+            pause(1000);
             return Thread.currentThread().getName();
         } finally {
             readWriteLock.readLock().unlock();

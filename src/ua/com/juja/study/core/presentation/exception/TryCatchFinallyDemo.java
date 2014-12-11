@@ -13,11 +13,18 @@ public class TryCatchFinallyDemo {
 
     public static void main(String[] args) {
         try {
-            main(args);
-        } catch (StackOverflowError error) {
-            System.out.println(error);
-            main(args);
+            System.err.print(" 0");
+            if (true) {
+                throw new Error();
+            }
+            System.err.print(" 1");
+        } catch (Error e) {
+            if (true) return;
+            System.err.print(" 2");
+        } finally {
+            System.err.print(" 3");
         }
+        System.err.print(" 4");
     }
 
     private static void tryWithResourcesDemo() throws NullPointerException {
